@@ -1,3 +1,22 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.67.0"
+    }
+  }
+}
+
+terraform {
+    backend "s3" {
+      bucket         = "swtf-tfstate-s3"
+      key            = "samsung-poc/AWS/foundry/terraform.tfstate"
+      region         = "ap-northeast-2"
+      encrypt        = true
+      dynamodb_table = "tfstate-lock"
+    }
+}
+
 module "foundry" {
   source = "./project"
   name     = "hyc-foundry"

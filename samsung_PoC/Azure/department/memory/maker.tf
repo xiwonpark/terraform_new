@@ -7,6 +7,16 @@ terraform {
   }
 }
 
+terraform {
+    backend "s3" {
+      bucket         = "swtf-tfstate-s3"
+      key            = "samsung-poc/Azure/memory/terraform.tfstate"
+      region         = "ap-northeast-2"
+      encrypt        = true
+      dynamodb_table = "tfstate-lock"
+    }
+}
+
 provider "azurerm" {
   features {}
   skip_provider_registration = true

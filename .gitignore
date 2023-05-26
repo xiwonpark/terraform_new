@@ -28,3 +28,9 @@ samsung_PoC/Azure/department/memory/.terraform.lock.hcl
 samsung_PoC/Azure/department/memory/terraform.tfstate
 samsung_PoC/Azure/department/memory/terraform.tfstate.backup
 samsung_PoC/Azure/department/memory/secret.tf
+
+# backend
+samsung_PoC/backend/.terraform
+samsung_PoC/backend/.terraform.lock.hcl
+samsung_PoC/backend/terraform.tfstate
+samsung_PoC/backend/terraform.tfstate.backup
