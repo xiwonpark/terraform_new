@@ -34,6 +34,7 @@ module "memory" {
   location_kc  = "koreacentral"
   poc_rg       = "samsung_poc_rg"
   nsg          = "/subscriptions/5e22e437-d178-4e96-b21e-2a21eaac3e1f/resourceGroups/samsung_poc_rg/providers/Microsoft.Network/networkSecurityGroups/test-nsg"
+  disk_encryption = "/subscriptions/5e22e437-d178-4e96-b21e-2a21eaac3e1f/resourceGroups/samsung_poc_rg/providers/Microsoft.Compute/diskEncryptionSets/test"
 
   vm_size = ["Standard_B1s", "Standard_B2s"]
 
@@ -41,7 +42,7 @@ module "memory" {
   D_project_hostname = [for line in split("\n", file("./project/DNS/D_project_DNS.txt")) : split("   ", line)[1]]
 
   image = {
-    RHEL79 = "/subscriptions/5e22e437-d178-4e96-b21e-2a21eaac3e1f/resourceGroups/samsung_poc_rg/providers/Microsoft.Compute/galleries/test/images/test/versions/0.0.1"
+    RHEL79 = "/subscriptions/5e22e437-d178-4e96-b21e-2a21eaac3e1f/resourceGroups/samsung_poc_rg/providers/Microsoft.Compute/galleries/test/images/PoC_Definition/versions/0.0.1"
     RHEL83 = "TEMP"
   }
 

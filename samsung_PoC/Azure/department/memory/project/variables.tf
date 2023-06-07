@@ -23,6 +23,11 @@ variable "nsg" {
   type        = string
 }
 
+variable "disk_encryption" {
+  description = "Disk Encryption ID"
+  type = string
+}
+
 variable "vm_size" {
   description = "VM Type For Memory"
   type        = list(any)

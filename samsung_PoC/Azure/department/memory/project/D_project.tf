@@ -1,34 +1,31 @@
-resource "azurerm_virtual_machine" "D_Project" {
+resource "azurerm_linux_virtual_machine" "D_Project" {
   count = length(var.D_project_ip)
 
   name                             = var.D_project_hostname[count.index]
   location                         = var.location_kc
   resource_group_name              = var.poc_rg
-  vm_size                          = var.vm_size[0]
+  size                             = var.vm_size[0]
   network_interface_ids            = [azurerm_network_interface.D_project_NIC[count.index].id]
-  delete_os_disk_on_termination    = true
-  delete_data_disks_on_termination = true
-
-  storage_image_reference {
-    id = "/subscriptions/5e22e437-d178-4e96-b21e-2a21eaac3e1f/resourceGroups/samsung_poc_rg/providers/Microsoft.Compute/galleries/test/images/test/versions/0.0.1"
+  source_image_id = lookup(var.image, "RHEL79")
+  plan {
+    publisher = "procomputers"
+    product   = "redhat-7-9-gen2"
+    name      = "redhat-7-9-gen2"
   }
 
-  storage_os_disk {
+  disable_password_authentication = false
+  admin_username = "ezadmin"
+  admin_password = "AzureTest2023!!"
+
+  os_disk {
     name              = "${var.D_project_hostname[count.index]}-osdisk"
     caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
+    storage_account_type = "Standard_LRS"
+
+    disk_encryption_set_id = var.disk_encryption
   }
 
-  os_profile {
-    computer_name  = var.D_project_hostname[count.index]
-    admin_username = "swpark"
-    admin_password = "AzureTest2023!!"
-  }
-
-  os_profile_linux_config {
-    disable_password_authentication = false
-  }
+  user_data = filebase64("./project/bootstrap.sh")
 }
 
 resource "azurerm_network_interface" "D_project_NIC" {
