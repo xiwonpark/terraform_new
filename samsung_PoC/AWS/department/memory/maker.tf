@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = "ap-northeast-2"
+}
+
 terraform {
     backend "s3" {
       bucket         = "swtf-tfstate-s3"
