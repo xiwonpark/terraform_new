@@ -30,6 +30,8 @@ module "foundry" {
   instance_type = ["t3.micro", "t3.medium", "t3.large", "t3.xlarge"]
   A_project_ip       = [for line in split("\n", file("./project/DNS/A_project_DNS.txt")) : split(" ", line)[0]]
   A_project_hostname = [for line in split("\n", file("./project/DNS/A_project_DNS.txt")) : split("   ", line)[1]]
+  test_project_ip       = [for line in split("\n", file("./project/DNS/test_project_DNS.txt")) : split(" ", line)[0]]
+  test_project_hostname = [for line in split("\n", file("./project/DNS/test_project_DNS.txt")) : split("   ", line)[1]]
 
 
   ami = {
