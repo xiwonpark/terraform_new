@@ -7,5 +7,5 @@ output "Foundry_Instance_ALL" {
 
 output "Foundry_instance_project_A" {
   description = "project_A_instance_ids"
-  value = module.foundry.instance_ids_A
+  value       = module.foundry.instance_ids_A
 }
