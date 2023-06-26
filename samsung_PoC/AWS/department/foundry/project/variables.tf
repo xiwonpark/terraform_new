@@ -26,14 +26,6 @@ variable "A_project_hostname" {
     type = list
 }
 
-variable "test_project_ip" {
-    type = list
-}
-
-variable "test_project_hostname" {
-    type = list
-}
-
 variable "ami" {
     description = "AMI map"
     type = map
