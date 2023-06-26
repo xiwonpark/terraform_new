@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
       version = "4.67.0"
     }
   }
@@ -15,9 +15,9 @@ resource "aws_s3_bucket" "tfstate" {
 }
 
 resource "aws_dynamodb_table" "terraform_state_lock" {
-  name         = "tfstate-lock"
-  hash_key     = "LockID"
-  billing_mode = "PAY_PER_REQUEST"
+  name           = "tfstate-lock"
+  hash_key       = "LockID"
+  billing_mode   = "PAY_PER_REQUEST"
 
   attribute {
     name = "LockID"
