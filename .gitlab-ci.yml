@@ -1,0 +1,22 @@
+default:
+  tags:
+    - testsw
+
+stages:
+  - detect
+  - test
+
+detect files:
+  stage: detect
+  script:
+    - echo $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - echo $CI_COMMIT_BRANCH
+    - echo $CI_PIPELINE_SOURCE
+
+test:
+  stage: test
+  script:
+    - pwd
+    - date
+    - id
