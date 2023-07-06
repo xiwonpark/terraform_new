@@ -17,5 +17,3 @@ detect files:
     # - FILES=$(git diff --name-only ${CI_COMMIT_SHA} origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME})
     - git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA
     # - echo $FILES
-  only:
-    - merge_requests
