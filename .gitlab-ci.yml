@@ -13,9 +13,9 @@ detect files:
     - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
     - echo $CI_MERGE_REQUEST_SOURCE_BRANCH_SHA
     - echo $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
-  rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  # rules:
+  #   - if: $CI_COMMIT_BRANCH == "main"
+  #   - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 terraform init:
   stage: init
