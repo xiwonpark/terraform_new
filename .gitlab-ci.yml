@@ -16,6 +16,8 @@ detect files:
     - echo $CI_PIPELINE_SOURCE
     - FILES=$(git diff --name-only ${CI_COMMIT_SHA} origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME} | grep '\.py'$)
     - echo $FILES
+  only:
+    - merge_requests
 
 test:
   stage: test
