@@ -14,7 +14,7 @@ detect files:
     - echo $CI_COMMIT_SHA
     - echo $CI_COMMIT_BRANCH
     - echo $CI_PIPELINE_SOURCE
-    - FILES=$(git diff --name-only ${CI_COMMIT_SHA} origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME} | grep '\.py'$)
+    - FILES=$(git diff --name-only ${CI_COMMIT_SHA} origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME} | grep '\.tf'$)
     - echo $FILES
   only:
     - merge_requests
