@@ -9,7 +9,7 @@ variables:
 init:
   stage: init
   script:
-    - echo $CHANGED_FILES
+    - $CHANGED_FILES
     - echo "to be parsing for init"
   tags:
     - testsw
@@ -17,7 +17,7 @@ init:
 plan:
   stage: plan
   script:
-    - echo $CHANGED_FILES
+    - $CHANGED_FILES
     - echo "to be parsing for plan"
   tags:
     - testsw
