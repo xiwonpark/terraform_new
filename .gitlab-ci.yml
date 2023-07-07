@@ -1,10 +1,20 @@
 stages:
+  - verify
   - init
   - plan
   - apply
 
 variables:
   CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+
+check variables:
+  stage: verify
+  script:
+    - echo $CI_PIPELINE_SOURCE
+    - echo $CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY
+    - echo $CI_MERGE_REQUEST_STATE
+  tags:
+    - testsw
 
 init:
   stage: init
@@ -28,6 +38,6 @@ apply:
     - echo "THIS IS APPLY"
     - echo "to be parsing for apply"
   rules:
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" && $CI_MERGE_REQUEST_STATE == "merged"
+    - if: $CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY == "main" && $CI_MERGE_REQUEST_STATE == "merged"
   tags:
     - testsw
