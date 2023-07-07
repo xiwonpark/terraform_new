@@ -1,6 +1,6 @@
-defaults:
-  tags:
-    - testsw
+# defaults:
+#   tags:
+#     - testsw
 
 stages:
   - init
