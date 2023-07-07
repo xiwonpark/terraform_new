@@ -10,13 +10,15 @@ init:
   stage: init
   script:
     - echo "$CHANGED_FILES"
+    - echo "to be parsing for init"
   tags:
     - testsw
 
 plan:
   stage: plan
   script:
-    - echo "THIS IS PLAN"
+    - echo "$CHANGED_FILES"
+    - echo "to be parsing for plan"
   tags:
     - testsw
 
@@ -24,6 +26,7 @@ apply:
   stage: apply
   script:
     - echo "THIS IS APPLY"
+    - echo "to be parsing for apply"
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" && $CI_MERGE_REQUEST_STATE == "merged"
   tags:
