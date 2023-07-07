@@ -4,7 +4,7 @@ stages:
   - apply
 
 variables:
-  CHANGED_FILES: $(git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA)
+  CHANGED_FILES: (git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA)
 
 init:
   stage: init
