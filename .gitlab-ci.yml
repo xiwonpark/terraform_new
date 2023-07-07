@@ -1,7 +1,3 @@
-# defaults:
-#   tags:
-#     - testsw
-
 stages:
   - init
   - plan
@@ -13,7 +9,7 @@ variables:
 init:
   stage: init
   script:
-    - echo $CHANGED_FILES
+    - echo "$CHANGED_FILES"
 
 plan:
   stage: plan
