@@ -10,11 +10,15 @@ init:
   stage: init
   script:
     - echo "$CHANGED_FILES"
+  tags:
+    - testsw
 
 plan:
   stage: plan
   script:
     - echo "THIS IS PLAN"
+  tags:
+    - testsw
 
 apply:
   stage: apply
@@ -22,3 +26,5 @@ apply:
     - echo "THIS IS APPLY"
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" && $CI_MERGE_REQUEST_STATE == "merged"
+  tags:
+    - testsw
