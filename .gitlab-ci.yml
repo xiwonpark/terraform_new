@@ -1,17 +1,11 @@
-workflow:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-      variables:
-        CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
-      when: always
-  script:
-    - echo $CHANGED_FILES > as-is.txt
-
 stages:
   - test
 
 test:
+  variables:
+    CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
   script:
-    - cat as-is.txt
-  tags:
-    - testsw
+    - echo $CI_PIPELINE_SOURCE
+    - echo $CHANGED_FILES
+    - echo $CHANGED_FILES > as-is.txt
+    - pwd
