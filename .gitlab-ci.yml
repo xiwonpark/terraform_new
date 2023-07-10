@@ -3,7 +3,7 @@ stages:
 
 test:
   variables:
-    CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+    CHANGED_FILES: git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA
   script:
     - echo $CI_PIPELINE_SOURCE
     - echo $CHANGED_FILES
