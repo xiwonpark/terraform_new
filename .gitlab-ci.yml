@@ -1,3 +1,9 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes:
+        - '**/*'
+
 stages:
   - merge_request
   - push_request
@@ -11,8 +17,6 @@ merge_request:
     - echo $CHANGED_FILES
     - $CHANGED_FILES > as-is.txt
     - pwd
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   tags:
     - testsw
 
