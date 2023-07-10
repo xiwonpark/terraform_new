@@ -1,8 +1,7 @@
 workflow:
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      changes:
-        - '**/*'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 stages:
   - merge_request
@@ -17,6 +16,8 @@ merge_request:
     - echo $CHANGED_FILES
     - $CHANGED_FILES > as-is.txt
     - pwd
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
   tags:
     - testsw
 
@@ -27,7 +28,6 @@ push_request:
   script:
     - echo $CI_PIPELINE_SOURCE
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_MERGE_REQUEST_APPROVED == "true"
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   tags:
     - testsw
