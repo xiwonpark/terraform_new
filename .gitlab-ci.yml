@@ -1,35 +1,11 @@
 workflow:
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
 
-stages:
-  - merge_request
-  - push_request
-
-merge_request:
-  stage: merge_request
-  variables:
-    CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+job1:
   script:
-    - echo $CI_PIPELINE_SOURCE
-    - echo $CHANGED_FILES
-    - $CHANGED_FILES > as-is.txt
-    - pwd
-  rules:
-    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
-  tags:
-    - testsw
+    - echo "This job runs in merge request pipelines"
 
-push_request:
-  stage: push_request
-  variables:
-    CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+job2:
   script:
-    - echo $CI_PIPELINE_SOURCE
-    - echo $CI_COMMIT_REF_NAME
-    - echo $CI_DEFAULT_BRANCH
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-  tags:
-    - testsw
+    - echo "This job also runs in merge request pipelines"
