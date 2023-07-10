@@ -5,7 +5,7 @@ job1:
     - echo $CI_DEFAULT_BRANCH
     - echo "THIS IS MergeRequest EVENT"
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "external_pull_request_event"
 
   tags:
     - testsw
