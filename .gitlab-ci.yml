@@ -10,11 +10,7 @@ stages:
 merge_request:
   stage: merge_request
   variables:
-    # CHANGED_FILES: "git diff --name-only $CI_COMMIT_SHA $CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
     CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
-    # CHANGED_FILES: "git diff --name-only $CI_COMMIT_REF_NAME origin/$CI_DEFAULT_BRANCH"
-    # CHANGED_FILES: "git diff --name-only $CI_MERGE_REQUEST_SOURCE_BRANCH_SHA $CI_COMMIT_SHA"
-
   script:
     - echo $CI_PIPELINE_SOURCE
     - echo $CHANGED_FILES
