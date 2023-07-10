@@ -6,3 +6,5 @@ workflow:
 job1:
   script:
     - echo "This job runs in merge request and also after merge to main branch"
+  tags:
+    - testsw
