@@ -3,3 +3,6 @@ job1:
     - echo $CI_PIPELINE_SOURCE
     - echo $CI_COMMIT_BRANCH
     - echo $CI_DEFAULT_BRANCH
+
+  tags:
+    - testsw
