@@ -19,6 +19,6 @@ job2:
     - echo $CI_DEFAULT_BRANCH
     - echo "THIS IS PUSH EVENT"
   rules:
-    - if: $CI_PIPELINE_SOURCE != "push"
+    - if: $CI_PIPELINE_SOURCE == "push"
   tags:
     - testsw
