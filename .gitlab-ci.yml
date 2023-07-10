@@ -1,7 +1,9 @@
 stages:
-  - test
+  - merge_request
+  - push_request
 
-test:
+merge_request:
+  stage: merge_request
   variables:
     CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
   script:
@@ -11,5 +13,16 @@ test:
     - pwd
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  tags:
+    - testsw
+
+push_request:
+  stage: push_request
+  variables:
+    CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+  script:
+    - echo $CI_PIPELINE_SOURCE
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
   tags:
     - testsw
