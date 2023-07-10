@@ -6,6 +6,8 @@ job1:
     - echo "THIS IS MergeRequest EVENT"
   rules:
     - if: $CI_PIPELINE_SOURCE == "pull_request_event"
+      when: manual
+      allow_failure: true
 
   tags:
     - testsw
