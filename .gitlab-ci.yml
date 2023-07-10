@@ -13,3 +13,5 @@ stages:
 test:
   script:
     - cat as-is.txt
+  tags:
+    - testsw
