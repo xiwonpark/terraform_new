@@ -34,3 +34,7 @@ samsung_PoC/backend/.terraform
 samsung_PoC/backend/.terraform.lock.hcl
 samsung_PoC/backend/terraform.tfstate
 samsung_PoC/backend/terraform.tfstate.backup
+
+# GitLAB POC
+as-is.txt
+script.py
