@@ -4,21 +4,21 @@ job1:
     - echo $CI_COMMIT_BRANCH
     - echo $CI_DEFAULT_BRANCH
     - echo "THIS IS MergeRequest EVENT"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "pull_request_event"
-      when: manual
-      allow_failure: true
+  # rules:
+  #   - if: $CI_PIPELINE_SOURCE == "pull_request_event"
+  #     when: manual
+  #     allow_failure: true
 
   tags:
     - testsw
 
-job2:
-  script:
-    - echo $CI_PIPELINE_SOURCE
-    - echo $CI_COMMIT_BRANCH
-    - echo $CI_DEFAULT_BRANCH
-    - echo "THIS IS PUSH EVENT"
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "push"
-  tags:
-    - testsw
+# job2:
+#   script:
+#     - echo $CI_PIPELINE_SOURCE
+#     - echo $CI_COMMIT_BRANCH
+#     - echo $CI_DEFAULT_BRANCH
+#     - echo "THIS IS PUSH EVENT"
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == "push"
+#   tags:
+#     - testsw
