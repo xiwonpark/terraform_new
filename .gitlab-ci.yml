@@ -1,9 +1,33 @@
-job:
-  script: echo "Hello, Rules!"
+workflow:
   rules:
-    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^feature/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != $CI_DEFAULT_BRANCH
-      when: never
-    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^feature/
-      when: manual
-      allow_failure: true
-    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages:
+  - merge_request
+  - push_request
+
+merge_request:
+  stage: merge_request
+  variables:
+    CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+  script:
+    - echo $CI_PIPELINE_SOURCE
+    - echo $CHANGED_FILES
+    - $CHANGED_FILES > as-is.txt
+    - pwd
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+  tags:
+    - testsw
+
+push_request:
+  stage: push_request
+  variables:
+    CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+  script:
+    - echo $CI_PIPELINE_SOURCE
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  tags:
+    - testsw
