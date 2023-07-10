@@ -27,6 +27,8 @@ push_request:
     CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
   script:
     - echo $CI_PIPELINE_SOURCE
+    - echo $CI_COMMIT_REF_NAME
+    - echo $CI_DEFAULT_BRANCH
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   tags:
