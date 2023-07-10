@@ -1,44 +1,15 @@
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      variables:
+        CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
+      when: always
+  script:
+    - echo $CHANGED_FILES > as-is.txt
+
 stages:
-  - verify
-  - init
-  # - plan
-  # - apply
+  - test
 
-variables:
-  CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
-
-check variables:
-  stage: verify
+test:
   script:
-    - echo $CI_PIPELINE_SOURCE
-    - echo $CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY
-    - echo $CI_MERGE_REQUEST_STATE
-    - pwd
-  tags:
-    - testsw
-
-init:
-  stage: init
-  script:
-    - $CHANGED_FILES
-    - echo "to be parsing for init"
-  tags:
-    - testsw
-
-# plan:
-#   stage: plan
-#   script:
-#     - $CHANGED_FILES
-#     - echo "to be parsing for plan"
-#   tags:
-#     - testsw
-
-# apply:
-#   stage: apply
-#   script:
-#     - echo "THIS IS APPLY"
-#     - echo "to be parsing for apply"
-#   rules:
-#     - if: $CI_EXTERNAL_PULL_REQUEST_TARGET_REPOSITORY == "main" && $CI_MERGE_REQUEST_STATE == "merged"
-#   tags:
-#     - testsw
+    - cat as-is.txt
