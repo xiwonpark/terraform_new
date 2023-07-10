@@ -1,11 +1,11 @@
-workflow:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      when: always
-  
+stages:
+  - test
+
 job1:
+  stage: test
   script:
     - echo "This job runs in merge request pipelines"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   tags:
     - testsw
-    
