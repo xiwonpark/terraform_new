@@ -7,7 +7,7 @@ test:
   script:
     - echo $CI_PIPELINE_SOURCE
     - echo $CHANGED_FILES
-    - echo $CHANGED_FILES > as-is.txt
+    - $CHANGED_FILES > as-is.txt
     - pwd
   tags:
     - testsw
