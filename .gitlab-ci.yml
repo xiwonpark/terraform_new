@@ -3,6 +3,16 @@ job1:
     - echo $CI_PIPELINE_SOURCE
     - echo $CI_COMMIT_BRANCH
     - echo $CI_DEFAULT_BRANCH
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
 
+  tags:
+    - testsw
+
+job2:
+  script:
+    - echo "THIS IS NOT PUSH"
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "push"
   tags:
     - testsw
