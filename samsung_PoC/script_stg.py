@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import os
 
-workdir = '/home/gitlab-runner/builds/aJrSxneHG/0/test4sw/poc/'
+workdir = '/home/gitlab-runner/builds/aJrSxneHG/0/test4sw/poc/samsung_PoC/'
 
 with open(f'{workdir}stg_data.txt', 'r') as file:
 	contents = file.read().rstrip().split('\n')
