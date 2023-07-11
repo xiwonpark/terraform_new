@@ -13,10 +13,11 @@ merge_request:
     CHANGED_FILES: "git diff --name-only $CI_MERGE_REQUEST_TARGET_BRANCH_SHA $CI_COMMIT_SHA"
   script:
     - echo $CI_PIPELINE_SOURCE
-    - echo $CHANGED_FILES
     - $CHANGED_FILES
-    - $CHANGED_FILES > as-is.txt
+    - $CHANGED_FILES > parsing.txt
     - pwd
+    - echo "RUN TF INIT & PLAN SCRIPT"
+    - python3 script_stg.py
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
   tags:
@@ -29,6 +30,9 @@ push_request:
   script:
     - echo $CI_PIPELINE_SOURCE
     - $CHANGED_FILES
+    - pwd
+    - echo "RUN TF APPLY SCRIPT"
+    - python3 script_prd.py
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   tags:
