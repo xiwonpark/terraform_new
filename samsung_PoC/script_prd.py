@@ -7,7 +7,7 @@ with open(f'{workdir}samsung_PoC/parsing.txt', 'r') as file:
 	contents = file.read().rstrip().split('\n')
 
 def execute_terraform_command(root_module_path):
-    command = f"cd {root_module_path} && terraform apply --auto-approve"
+    command = f"cd {root_module_path} && terraform init && terraform apply --auto-approve"
     os.system(command)
     print(f"Excuting Terraform Command In: {root_module_path}")
 
