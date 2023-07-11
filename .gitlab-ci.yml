@@ -14,7 +14,7 @@ merge_request:
   script:
     - echo $CI_PIPELINE_SOURCE
     - $CHANGED_FILES
-    - $CHANGED_FILES > parsing.txt
+    - $CHANGED_FILES > ./samsung_PoC/parsing.txt
     - pwd
     - echo "RUN TF INIT & PLAN SCRIPT"
     - cd ./samsung_PoC
@@ -31,7 +31,7 @@ push_request:
     CHANGED_FILES: "git diff --name-only $CI_COMMIT_BEFORE_SHA $CI_COMMIT_SHA"
   script:
     - echo $CI_PIPELINE_SOURCE
-    - $CHANGED_FILES
+    - $CHANGED_FILES > ./samsung_PoC/parsing.txt
     - pwd
     - cd ./samsung_PoC
     - chmod 700 script_prd.py
