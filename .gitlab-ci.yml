@@ -17,6 +17,7 @@ merge_request:
     - $CHANGED_FILES > parsing.txt
     - pwd
     - echo "RUN TF INIT & PLAN SCRIPT"
+    - cd ./samsung_PoC
     - chmod 700 script_stg.py
     - python3 script_stg.py
   rules:
@@ -32,6 +33,7 @@ push_request:
     - echo $CI_PIPELINE_SOURCE
     - $CHANGED_FILES
     - pwd
+    - cd ./samsung_PoC
     - chmod 700 script_prd.py
     - echo "RUN TF APPLY SCRIPT"
     - python3 script_prd.py
