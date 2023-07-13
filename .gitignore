@@ -1,40 +1,24 @@
-# HPC_Infra
-HPC_Infra/stg/.terraform
-HPC_Infra/stg/.terraform.lock.hcl
-HPC_Infra/stg/terraform.tfstate
-HPC_Infra/stg/terraform.tfstate.backup
-
-# K8s
-k8s/stg/.terraform
-k8s/stg/.terraform.lock.hcl
-k8s/stg/terraform.tfstate
-k8s/stg/terraform.tfstate.backup
-
 # samsung_PoC-AWS_MEM
-samsung_PoC/AWS/department/memory/.terraform
-samsung_PoC/AWS/department/memory/.terraform.lock.hcl
-samsung_PoC/AWS/department/memory/terraform.tfstate
-samsung_PoC/AWS/department/memory/terraform.tfstate.backup
+AWS/department/memory/.terraform
+AWS/department/memory/.terraform.lock.hcl
+AWS/department/memory/terraform.tfstate
+AWS/department/memory/terraform.tfstate.backup
 
 # samsung_PoC-AWS_Foundry
-samsung_PoC/AWS/department/foundry/.terraform
-samsung_PoC/AWS/department/foundry/.terraform.lock.hcl
-samsung_PoC/AWS/department/foundry/terraform.tfstate
-samsung_PoC/AWS/department/foundry/terraform.tfstate.backup
+AWS/department/foundry/.terraform
+AWS/department/foundry/.terraform.lock.hcl
+AWS/department/foundry/terraform.tfstate
+AWS/department/foundry/terraform.tfstate.backup
 
 # samsung_PoC-Azure_MEM
-samsung_PoC/Azure/department/memory/.terraform
-samsung_PoC/Azure/department/memory/.terraform.lock.hcl
-samsung_PoC/Azure/department/memory/terraform.tfstate
-samsung_PoC/Azure/department/memory/terraform.tfstate.backup
-samsung_PoC/Azure/department/memory/secret.tf
+Azure/department/memory/.terraform
+Azure/department/memory/.terraform.lock.hcl
+Azure/department/memory/terraform.tfstate
+Azure/department/memory/terraform.tfstate.backup
+Azure/department/memory/secret.tf
 
 # backend
-samsung_PoC/backend/.terraform
-samsung_PoC/backend/.terraform.lock.hcl
-samsung_PoC/backend/terraform.tfstate
-samsung_PoC/backend/terraform.tfstate.backup
-
-# GitLAB POC
-as-is.txt
-script.py
+backend/.terraform
+backend/.terraform.lock.hcl
+backend/terraform.tfstate
+backend/terraform.tfstate.backup
