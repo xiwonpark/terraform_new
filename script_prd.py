@@ -3,7 +3,7 @@ import os
 
 workdir = '/home/gitlab-runner/builds/aJrSxneHG/0/test4sw/poc/'
 
-with open(f'{workdir}samsung_PoC/parsing.txt', 'r') as file:
+with open(f'{workdir}parsing.txt', 'r') as file:
 	contents = file.read().rstrip().split('\n')
 
 def execute_terraform_command(root_module_path):
